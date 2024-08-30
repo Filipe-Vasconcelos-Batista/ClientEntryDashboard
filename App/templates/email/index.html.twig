@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmailController!{% endblock %}
+
+{% block body %}
+    {% if form %}
+        <div  class="container">
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">My form</div>
+                        <div class="card-body">
+                            {{ form_start(form) }}
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                {{ form_row(form.name, {
+                                    id: 'name',
+                                    required: true,
+                                }) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id" class="form-label">Id</label>
+                                {{ form_row(form.id, {
+                                    id: 'id',
+                                    required: true,
+                                }) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="number" class="form-label">Number</label>
+                                {{ form_row(form.number, {
+                                    id: 'number',
+                                    required: true,
+                                }) }}
+                                <div class="mb-3">
+                                    {{ form_row(form.legal, {
+                                        id: 'legal',
+                                        required: false,
+                                    }) }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-success btn-lg" >    Send Email     </button>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

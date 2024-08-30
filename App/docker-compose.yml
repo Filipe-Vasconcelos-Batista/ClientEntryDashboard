@@ -15,19 +15,16 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
-    depends_on:
-      - database
-  database:
-    image: mysql:latest
-    container_name: ${DB_HOST}
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASS}
-      MYSQL_DATABASE: ${DB_NAME}
+  mailer:
+    image: axllent/mailpit
     ports:
-      - "3306:3306"
+      - "1025"
+      - "8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
 
   redis:
     image: redis:7.0.0
     ports:
       - "6379:6379"
-
